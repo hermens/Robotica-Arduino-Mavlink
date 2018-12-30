@@ -1,6 +1,10 @@
 
 #include "mavlink.h"
 
+#define DistancePIN 7
+#define AltitudePI 8
+
+
 unsigned long previousMillisMAVLink = 0;    // will store last time MAVLink was transmitted and listened
 unsigned long next_interval_MAVLink = 1000; // next interval to count
 const int num_hbs = 60;                     // # of heartbeats to wait before activating STREAMS from Pixhawk. 60 = one minute.
@@ -25,6 +29,27 @@ void setup()
 {
   // MAVLink interface start
   Serial.begin(57600);
+
+  // Sensors setup
+  pinMode(DistancePIN, INPUT);
+  pinMode(AltitudePIN, INPUT);
+}
+
+double getFrontDistance()
+{
+  long duration = pulseIn(DistancePIN, HIGH);
+  long distance = (duration/147)*2.54;
+  Serial.print(distance);
+  Serial.print("cm");
+}
+
+
+double getAltitude()
+{
+  long duration = pulseIn(AltitudePIN, HIGH);
+  long distance = (duration/147)*2.54;
+  Serial.print(distance);
+  Serial.print("cm");
 }
 
 void sendHeartBeat()
