@@ -1,5 +1,5 @@
 {
     "board": "arduino:avr:uno",
-    "sketch": "test_recs.ino",
+    "sketch": "Arduino-Mavlink\\Arduino-Mavlink.ino",
     "port": "COM6"
 }
