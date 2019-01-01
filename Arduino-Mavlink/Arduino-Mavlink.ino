@@ -2,7 +2,7 @@
 #include "mavlink.h"
 
 #define DistancePIN 7
-#define AltitudePI 8
+#define AltitudePIN 8
 
 
 unsigned long previousMillisMAVLink = 0;    // will store last time MAVLink was transmitted and listened
